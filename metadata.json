@@ -1,0 +1,26 @@
+{
+  "name": "apache",
+  "version": "1.0",
+  "author": "Michael Watters",
+  "summary": "Installs and configures apache.",
+  "license": "BSD",
+  "source": "",
+  "project_page": null,
+  "issues_url": null,
+  "dependencies": [],
+  "operatingsystem_support": [
+    {
+    "operatingsystem":"RedHat",
+    "operatingsystemmajrelease":[ "7.0" ]
+    },
+    {
+    "operatingsystem": "FreeBSD",
+    "operatingsystemmajrelease":[ "10" ]
+    }
+   ],
+  "dependencies": [
+    { "name": "puppetlabs/stdlib", "version_requirement": ">= 3.2.0 < 5.0.0" },
+    { "name": "puppetlabs/firewall", "version_requirement": ">= 0.0.4" }
+  ],
+  "data_provider": "hiera"
+}
