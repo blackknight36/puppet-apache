@@ -18,7 +18,7 @@
 #   Configure SE Linux to allow httpd scripts and modules to connect to the
 #   network using TCP.  One of: true or false (default).
 #
-# [*network_connect_db*]
+# [*httpd_can_network_connect_db*]
 #   Configure SE Linux to allow httpd scripts and modules to connect to
 #   databases over the network.  One of: true or false (default).
 #
@@ -56,7 +56,7 @@ class apache (
     Boolean $enable_homedirs = false,
     Boolean $execmem = false,
     Boolean $network_connect = false,
-    Boolean $network_connect_db = false,
+    Boolean $httpd_can_network_connect_db = false,
     Boolean $use_nfs = false,
     Boolean $manage_firewall = true,
     Boolean $httpd_read_user_content = false,
@@ -141,8 +141,8 @@ class apache (
                     default => 'off',
                 };
 
-            $bool_can_network_connect_db:
-                value => $network_connect_db ? {
+            'httpd_can_network_connect_db':
+                value => $httpd_can_network_connect_db ? {
                     true    => 'on',
                     default => 'off',
                 };
