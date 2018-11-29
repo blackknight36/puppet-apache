@@ -13,24 +13,25 @@
 # === Authors
 #
 #   John Florian <jflorian@doubledog.org>
-#   Michael Watters <wattersm@watters.ws>
+#   Michael Watters <michael.watters@dart.biz>
 
 class apache::mod_ssl (
-    Optional[Array[String]] $packages = undef,
+    Array[String] $packages = ['mod_ssl'],
     Boolean $manage_firewall = true,
     ) {
+
+    include 'apache'
 
     package { $packages:
         ensure => installed,
         notify => Service[$apache::services],
     }
 
-    if $manage_firewall and $::kernel == 'Linux' {
-        firewall { '081 apache https':
+    if $manage_firewall == true {
+        firewall { '101 allow https':
             dport  => 443,
             proto  => tcp,
             action => accept,
         }
     }
-
 }

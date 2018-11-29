@@ -1,26 +1,17 @@
 {
-  "name": "apache",
-  "version": "1.0",
+  "name": "mdct-apache",
+  "version": "1.0.0",
   "author": "Michael Watters",
   "summary": "Installs and configures apache.",
-  "license": "BSD",
+  "license": "GPL-2.0",
   "source": "",
-  "project_page": null,
-  "issues_url": null,
-  "dependencies": [],
+  "project_page": "https://mdct-pagure.dartcontainer.com/puppet/mdct-apache",
+  "issues_url": "https://mdct-pagure.dartcontainer.com/puppet/mdct-apache/issues",
   "operatingsystem_support": [
-    {
-    "operatingsystem":"RedHat",
-    "operatingsystemmajrelease":[ "7.0" ]
-    },
-    {
-    "operatingsystem": "FreeBSD",
-    "operatingsystemmajrelease":[ "10" ]
-    }
+    { "operatingsystem":"CentOS", "operatingsystemrelease":[ "7" ] },
+    { "operatingsystem":"Fedora", "operatingsystemrelease":[ "23", "24", "25", "26", "27", "28", "29" ] }
    ],
   "dependencies": [
-    { "name": "puppetlabs/stdlib", "version_requirement": ">= 3.2.0 < 5.0.0" },
-    { "name": "puppetlabs/firewall", "version_requirement": ">= 0.0.4" }
-  ],
-  "data_provider": "hiera"
+    { "name": "puppetlabs/firewall", "version_requirement": ">= 0.0.4 <= 1.14.0" }
+  ]
 }

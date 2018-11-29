@@ -32,16 +32,18 @@
 # === Authors
 #
 #   John Florian <jflorian@doubledog.org>
-#   Michael Watters <wattersm@watters.ws>
+#   Michael Watters <michael.watters@dart.biz>
 
 define apache::misc_file (
-    Optional[String] $ensure = 'present',
+    String $ensure = 'present',
     Optional[String] $content = undef,
     Optional[String] $source = undef,
-    Optional[String] $owner = 'root',
-    Optional[String] $group = 'apache',
-    Optional[String] $mode = '0640',
+    String $owner = 'root',
+    String $group = 'apache',
+    String $mode = '0640',
     ) {
+
+    include 'apache'
 
     file { "${apache::include_dir}/${name}":
         ensure  => $ensure,

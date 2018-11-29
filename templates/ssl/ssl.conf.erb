@@ -44,14 +44,14 @@ SSLHonorCipherOrder on
 # the certificate is encrypted, then you will be prompted for a
 # pass phrase.  Note that a kill -HUP will prompt again.  A new
 # certificate can be generated using the genkey(1) command.
-SSLCertificateFile /etc/pki/tls/certs/<%= @fqdn %>.crt
+SSLCertificateFile /etc/pki/tls/certs/<%= @site_name %>.crt
 
 #   Server Private Key:
 #   If the key is not combined with the certificate, use this
 #   directive to point at the key file.  Keep in mind that if
 #   you've both a RSA and a DSA private key you can configure
 #   both in parallel (to also allow the use of DSA ciphers, etc.)
-SSLCertificateKeyFile /etc/pki/tls/private/<%= @fqdn %>.key
+SSLCertificateKeyFile /etc/pki/tls/private/<%= @site_name %>.key
 
 #   Certificate Authority (CA):
 #   Set the CA certificate verification path where to find CA
@@ -152,3 +152,4 @@ CustomLog logs/ssl_request_log \
           "%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \"%r\" %b"
 
 </VirtualHost>
+

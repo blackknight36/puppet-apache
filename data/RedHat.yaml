@@ -6,11 +6,9 @@ apache::services:
     - 'httpd'
 
 apache::conf_dir:               '/etc/httpd'
-apache::conf_file:              "%{hiera('apache::conf_dir')}/httpd.conf"
+apache::conf_file:              "%{hiera('apache::conf_dir')}/conf/httpd.conf"
 apache::include_dir:            "%{hiera('apache::conf_dir')}/conf.d"
 apache::module_include_dir:     "%{hiera('apache::conf_dir')}/conf.modules.d"
-apache::ssl_cert_dir:           '/etc/pki/tls/certs'
-apache::ssl_private_dir:        '/etc/pki/tls/private'
 
 apache::mod_passenger::packages:
     - 'mod_passenger'

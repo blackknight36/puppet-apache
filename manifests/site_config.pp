@@ -23,26 +23,28 @@
 # === Authors
 #
 #   John Florian <jflorian@doubledog.org>
-#   Michael Watters <wattersm@watters.ws>
+#   Michael Watters <michael.watters@dart.biz>
 
 define apache::site_config (
     Optional[String] $content = undef,
     Optional[String] $source = undef,
-    Optional[String] $ensure = 'present',
+    String $ensure = 'present',
     ) {
+
+    include 'apache'
 
     file { "${apache::include_dir}/${name}.conf":
         ensure  => $ensure,
         owner   => 'root',
-        group   => 'wheel',
+        group   => 'root',
         mode    => '0640',
         seluser => 'system_u',
         selrole => 'object_r',
         seltype => 'httpd_config_t',
         content => $content,
         source  => $source,
-        require => Package[$apache::params::packages],
-        notify  => Service[$apache::params::services],
+        require => Package[$apache::packages],
+        notify  => Service[$apache::services],
     }
 
 }

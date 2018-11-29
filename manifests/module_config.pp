@@ -25,13 +25,15 @@
 # === Authors
 #
 #   John Florian <john.florian@dart.biz>
-#   Michael Watters <wattersm@watters.ws>
+#   Michael Watters <michael.watters@dart.biz>
 
 define apache::module_config (
     Optional[String] $source = undef,
     Optional[String] $content = undef,
-    Optional[String] $ensure = 'present'
+    String $ensure = 'present',
     ) {
+
+    include 'apache'
 
     file { "${apache::module_include_dir}/${name}.conf":
         ensure  => $ensure,

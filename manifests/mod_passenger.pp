@@ -11,11 +11,13 @@
 # === Authors
 #
 #   John Florian <jflorian@doubledog.org>
-#   Michael Watters <wattersm@watters.ws>
+#   Michael Watters <michael.watters@dart.biz>
 
 class apache::mod_passenger (
-    Optional[Array[String]] $packages = undef,
+    Array[String] $packages = [],
     ) {
+
+    include 'apache'
 
     package { $packages:
         ensure => installed,

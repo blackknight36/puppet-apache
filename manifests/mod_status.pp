@@ -8,16 +8,17 @@
 #
 # === Authors
 #
-#   Michael Watters <wattersm@watters.ws>
+#   Michael Watters <michael.watters@dart.biz>
 
 class apache::mod_status (
-    Optional[Array[String]] $packages = undef,
-    Optional[Array[String]] $services = undef,
     ) {
 
+    include 'apache'
+
     file { "${apache::include_dir}/mod_status.conf":
-        source => 'puppet:///modules/apache/mod_status.conf',
-        notify => Service[$apache::services],
+        source  => 'puppet:///modules/apache/mod_status.conf',
+        notify  => Service[$apache::services],
+        require => Package[$apache::packages],
     }
 
 }
