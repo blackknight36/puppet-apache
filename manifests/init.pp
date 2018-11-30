@@ -76,18 +76,6 @@ class apache (
     String $module_include_dir = '/etc/httpd/conf.modules.d',
     ) {
 
-    File {
-        owner       => 'root',
-        group       => 'root',
-        mode        => '0640',
-        seluser     => 'system_u',
-        selrole     => 'object_r',
-        seltype     => 'httpd_config_t',
-        before      => Service[$services],
-        notify      => Service[$services],
-        subscribe   => Package[$packages],
-    }
-
     case $facts['operatingsystem'] {
         'CentOS', 'Fedora': {
             $bool_anon_write = 'httpd_anon_write'
@@ -109,10 +97,21 @@ class apache (
     }
 
     file { $conf_file:
-        content => template($conf_template),
+        owner       => 'root',
+        group       => 'root',
+        mode        => '0640',
+        seluser     => 'system_u',
+        selrole     => 'object_r',
+        seltype     => 'httpd_config_t',
+        before      => Service[$services],
+        notify      => Service[$services],
+        subscribe   => Package[$packages],
+        content     => template($conf_template),
     }
 
     if $manage_firewall == true {
+        include 'firewall'
+
         firewall { '100 allow http':
             dport  => 80,
             proto  => tcp,
