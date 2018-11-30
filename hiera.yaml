@@ -1,22 +1,25 @@
 ---
-version: 4
-datadir: data
+version: 5
+
+defaults:
+  datadir: hieradata
+  data_hash: yaml_data
+
 hierarchy:
+  - name: "FQDN"
+    path: "nodes/%{::domain}/%{::hostname}.yaml"
+
   - name: "Full Version"
-    backend: yaml
-    path: "%{facts.os.name}-%{facts.os.release.full}"
+    path: "%{facts.os.name}-%{facts.os.release.full}.yaml"
 
   - name: "Major Version"
-    backend: yaml
-    path: "%{facts.os.name}-%{facts.os.release.major}"
+    path: "%{facts.os.name}-%{facts.os.release.major}.yaml"
 
   - name: "Distribution Name"
-    backend: yaml
-    path: "%{facts.os.name}"
+    path: "%{facts.os.name}.yaml"
 
   - name: "Operating System Family"
-    backend: yaml
-    path: "%{facts.os.family}"
+    path: "%{facts.os.family}.yaml"
 
   - name: "common"
-    backend: yaml
+    path: "common.yaml"
