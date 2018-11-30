@@ -2,4 +2,5 @@ fixtures:
     symlinks:
       apache: "#{source_dir}"
     forge_modules:
-        firewall:  "puppetlabs/firewall"
+        stdlib: puppetlabs-stdlib
+        firewall:  puppetlabs-firewall

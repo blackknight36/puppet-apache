@@ -1,6 +1,6 @@
 {
   "name": "mdct-apache",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Michael Watters",
   "summary": "Installs and configures apache.",
   "license": "GPL-2.0",
@@ -12,6 +12,7 @@
     { "operatingsystem":"Fedora", "operatingsystemrelease":[ "23", "24", "25", "26", "27", "28", "29" ] }
    ],
   "dependencies": [
-    { "name": "puppetlabs/firewall", "version_requirement": ">= 0.0.4 <= 1.14.0" }
+    { "name": "puppetlabs/firewall", "version_requirement": ">= 0.0.4 <= 1.14.0" },
+    { "name": "puppetlabs/stdlib", "version_requirement": ">= 5.1.0" }
   ]
 }
